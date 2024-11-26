@@ -1,7 +1,7 @@
 {
-  "name": "webpack-template",
+  "name": "battleship",
   "version": "1.0.0",
-  "description": "A starter template for modern JavaScript applications using Webpack.",
+  "description": "battleship game",
   "main": "src/index.js",
   "scripts": {
     "test": "jest",
