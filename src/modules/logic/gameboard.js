@@ -28,9 +28,8 @@ class Cell {
   hittedCell() {
     if (this.hasShip()) {
       this.#ship.hit();
-    } else {
-      this.isHit = true;
-    }
+    };
+    this.#isHit = true;
   }
 }
 
@@ -65,7 +64,7 @@ class Gameboard {
     const incrementX = isHorizontal ? 1 : 0;
     const incrementY = isHorizontal ? 0 : 1;
 
-    for (let i = 0; i < ship.length; i ++) {
+    for (let i = 0; i < ship.length; i++) {
       const newX = x + i * incrementX;
       const newY = y + i * incrementY;
 
@@ -74,23 +73,27 @@ class Gameboard {
   }
 
   #checkLegalPos(x, y, ship, isHorizontal) {
-    let counter = ship.length;
-    if (isHorizontal) {
-      if (x < 0 || (x + ship.length) >= this.#cols) return false;
-      while (counter > 0) {
-        if (this.#board[x][y].hasShip()) return false;
-        x++;
-        counter--;
-      }
-    } else {
-      if (y < 0 || (y + ship.length) >= this.#rows) return false;
-      while (counter > 0) {
-        if (this.#board[x][y].hasShip()) return false;
-        y++;
-        counter--;
-      }
+    const incrementX = isHorizontal ? 1 : 0;
+    const incrementY = isHorizontal ? 0 : 1;
+
+    for (let i = 0; i < ship.length; i++) {
+      const newX = x + i * incrementX;
+      const newY = y + i * incrementY;
+
+      if (newX < 0 || newX >= this.#cols || newY < 0 || newY >= this.#rows) return false;
+
+      if (this.#board[newX][newY].hasShip()) return false;
     }
     return true;
+  }
+
+  receiveAttack(x, y,) {
+    if (x < 0 || x > this.#rows - 1 || y < 0 || y > this.#cols - 1) throw new Error("invalid coordinates");
+    if (this.#board[x][y].isHit) throw new Error("already hit");
+
+    this.#board[x][y].hittedCell();
+
+    return this.#board[x][y].hasShip();
   }
 }
 
