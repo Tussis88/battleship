@@ -88,7 +88,7 @@ class Gameboard {
   }
 
   receiveAttack(x, y,) {
-    if (x < 0 || x > this.#rows - 1 || y < 0 || y > this.#cols - 1) throw new Error("invalid coordinates");
+    if (x < 0 || x >= this.#cols || y < 0 || y >= this.#rows) throw new Error("invalid coordinates");
     if (this.#board[x][y].isHit) throw new Error("already hit");
 
     this.#board[x][y].hittedCell();
