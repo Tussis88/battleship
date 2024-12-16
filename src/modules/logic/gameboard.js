@@ -38,6 +38,7 @@ class Gameboard {
   #rows = 10;
   #board = [];
   #shipArray = [];
+  #gameOver = false;
 
   constructor() {
     this.resetBoard();
@@ -54,6 +55,10 @@ class Gameboard {
 
   get getBoard() {
     return this.#board;
+  }
+
+  get gameOver() {
+    return this.#gameOver;
   }
 
   placeShip(x, y, ship, isHorizontal) {
@@ -92,6 +97,10 @@ class Gameboard {
     if (this.#board[x][y].isHit) throw new Error("already hit");
 
     this.#board[x][y].hittedCell();
+
+    if (this.#board[x][y].hasShip()) {
+      this.#gameOver = this.#shipArray.every(ship => ship.isSunk() === true);
+    }
 
     return this.#board[x][y].hasShip();
   }

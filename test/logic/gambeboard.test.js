@@ -68,4 +68,23 @@ describe("Gameboard", () => {
         expect(board.receiveAttack(5, 2)).toBe(true);
         expect(board.receiveAttack(4, 1)).toBe(false);
     })
+
+    test("gameOver", () => {
+        const board = new Gameboard();
+        const ship = new Ship(3);
+        board.placeShip(3, 2, ship, true);
+        const ship2 = new Ship(2);
+        board.placeShip(5, 5, ship2, false);
+
+        expect(board.gameOver).toBe(false);
+        expect(board.receiveAttack(3, 2)).toBe(true);
+        expect(board.receiveAttack(4, 2)).toBe(true);
+        expect(board.receiveAttack(5, 2)).toBe(true);
+
+        expect(board.gameOver).toBe(false);
+        expect(board.receiveAttack(5, 5)).toBe(true);
+        expect(board.receiveAttack(5, 6)).toBe(true);
+
+        expect(board.gameOver).toBe(true);
+    })
 })
