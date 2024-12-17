@@ -1,15 +1,19 @@
 import { Gameboard } from "./gameboard";
 
 class Player {
-    #isComputer;
+    #isPlayer;
 
-    constructor(isComputer) {
+    constructor() {
         this.board = new Gameboard();
-        this.#isComputer = isComputer;
+        this.#isPlayer = true;
     }
 
-    get isComputer() {
-        return this.#isComputer;
+    get isPlayer() {
+        return this.#isPlayer;
+    }
+
+    setAsComputer() {
+        this.#isPlayer = false;
     }
 };
 
