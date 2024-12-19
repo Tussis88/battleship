@@ -1,5 +1,4 @@
 import { Player } from "./player";
-import { Gameboard } from "./gameboard";
 import { Ship } from "./ship";
 
 function gameControl() {
@@ -25,11 +24,14 @@ function gameControl() {
         }
     }
 
+    const getPlayer = () => humanPlayer;
+    const getCpu = () => cpuPlayer;
+
     const playRound = (x, y) => {
         // human turn
         cpuPlayer.board.receiveAttack(x, y);
         if (cpuPlayer.board.gameOver) {
-            return false;
+            return "player";
         }
 
         //cpu turn
@@ -45,11 +47,11 @@ function gameControl() {
             }
         }
         if (humanPlayer.board.gameOver) {
-            return false;
+            return "cpu";
         }
 
-        return { playRound, placeShips }
     }
+    return { playRound, placeShips, getPlayer, getCpu }
 }
 
 export { gameControl }

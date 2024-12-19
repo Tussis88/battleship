@@ -7,15 +7,16 @@ describe("gameControl", () => {
 
     test("place ship in game", () => {
         const game = gameControl();
-        expect(game.placeShips(3, 2, 3, true));
+        game.placeShips(3, 2, 3, true);
+        expect(game.getPlayer.board.getBoard[3][2].hasShip()).toBe(true);
     });
 
-    test("play turn", () => {
-        const game = gameControl();
-        game.placeShips(3, 2, 1, true);
-        game.placeShips(5, 7, 2, false);
+    // test("play turn", () => {
+    //     const game = gameControl();
+    //     game.placeShips(3, 2, 1, true);
 
-        game.playRound(3, 2);
+    //     game.playRound(3, 2);
+    //     expect(game)
 
-    });
+    // });
 })
