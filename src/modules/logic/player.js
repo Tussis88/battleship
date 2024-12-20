@@ -12,6 +12,10 @@ class Player {
         return this.#isPlayer;
     }
 
+    get getBoard() {
+        return this.board.getBoard;
+    }
+
     setAsComputer() {
         this.#isPlayer = false;
     }

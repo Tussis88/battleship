@@ -6,17 +6,17 @@ function gameControl() {
     const cpuPlayer = new Player();
     cpuPlayer.setAsComputer();
 
-    const placeShips = (x, y, shipLength, direction) => {
+    const shipsPlacement = (x, y, shipLength, direction) => {
         const playerShip = new Ship(shipLength);
-        humanPlayer.placeShips(x, y, playerShip, direction);
+        humanPlayer.board.placeShip(x, y, playerShip, direction);
 
         const cpuShip = new Ship(shipLength);
         let cpuAttempt = true;
         while (cpuAttempt) {
-            const randomX = Math.floor(Math.random() * 10) - 1;
-            const randomY = Math.floor(Math.random() * 10) - 1;
+            const randomX = Math.floor(Math.random() * 10);
+            const randomY = Math.floor(Math.random() * 10);
             try {
-                cpuPlayer.placeShips(randomX, randomY, cpuShip, Math.random() < 0.5);
+                cpuPlayer.board.placeShip(randomX, randomY, cpuShip, Math.random() < 0.5);
                 cpuAttempt = false;
             } catch {
                 continue;
@@ -37,8 +37,8 @@ function gameControl() {
         //cpu turn
         let attempt = true;
         while (attempt) {
-            const randomX = Math.floor(Math.random() * 10) - 1;
-            const randomY = Math.floor(Math.random() * 10) - 1;
+            const randomX = Math.floor(Math.random() * 10);
+            const randomY = Math.floor(Math.random() * 10);
             try {
                 humanPlayer.board.receiveAttack(randomX, randomY);
                 attempt = false;
@@ -51,7 +51,7 @@ function gameControl() {
         }
 
     }
-    return { playRound, placeShips, getPlayer, getCpu }
+    return { playRound, shipsPlacement, getPlayer, getCpu }
 }
 
 export { gameControl }

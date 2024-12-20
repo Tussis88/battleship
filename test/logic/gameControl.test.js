@@ -7,8 +7,8 @@ describe("gameControl", () => {
 
     test("place ship in game", () => {
         const game = gameControl();
-        game.placeShips(3, 2, 3, true);
-        expect(game.getPlayer.board.getBoard[3][2].hasShip()).toBe(true);
+        game.shipsPlacement(3, 2, 3, true);
+        expect(game.getPlayer().getBoard[3][2].hasShip()).toBe(true);
     });
 
     // test("play turn", () => {
