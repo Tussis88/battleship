@@ -99,7 +99,7 @@ class Gameboard {
     this.#board[x][y].hittedCell();
 
     if (this.#board[x][y].hasShip()) {
-      this.#gameOver = this.#shipArray.every(ship => ship.isSunk() === true);
+      this.#gameOver = this.#shipArray.every(ship => ship.isSunk());
     }
 
     return this.#board[x][y].hasShip();

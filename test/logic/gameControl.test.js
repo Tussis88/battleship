@@ -10,13 +10,10 @@ describe("gameControl", () => {
         game.shipsPlacement(3, 2, 3, true);
         expect(game.getPlayer().getBoard[3][2].hasShip()).toBe(true);
     });
-
-    // test("play turn", () => {
-    //     const game = gameControl();
-    //     game.placeShips(3, 2, 1, true);
-
-    //     game.playRound(3, 2);
-    //     expect(game)
-
-    // });
+    //
+    test("play turn", () => {
+        const game = gameControl();
+        game.shipsPlacement(3, 2, 2, true);
+        expect(game.playRound(3, 2)).toBeUndefined();
+    });
 })

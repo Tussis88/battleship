@@ -30,6 +30,7 @@ function gameControl() {
     const playRound = (x, y) => {
         // human turn
         cpuPlayer.board.receiveAttack(x, y);
+        console.log(cpuPlayer.board.gameOver);
         if (cpuPlayer.board.gameOver) {
             return "player";
         }
