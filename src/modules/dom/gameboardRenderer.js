@@ -6,6 +6,7 @@ function gameboardRenderer(player) {
         for (let j = 0; j < board[i].length; j++) {
             const cell = document.createElement("div");
             cell.classList.add("cell");
+            boardDiv.appendChild(cell);
             if (player.isPlayer) {
                 if (board[i][j].hasShip() && board[i][j].isHit) {
                     cell.classList.add("hit");
@@ -25,6 +26,8 @@ function gameboardRenderer(player) {
                     } else {
                         cell.classList.add("miss");
                     }
+                } else {
+                    cell.classList.add("water");
                 }
             }
         }
