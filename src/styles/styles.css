@@ -6,13 +6,15 @@ body {
     display: grid;
     grid-template-columns: repeat(10, 20px);
     grid-template-rows: 10, 10px;
-    gap: 1px;
+    margin: 20px
 }
 
 .cell {
     width: 20px;
     height: 20px;
     border: 1px solid black;
+    margin: 0px;
+    padding: 0px;
 }
 
 .water {
