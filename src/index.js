@@ -4,7 +4,4 @@ import "./styles/styles.css";
 import { mainPage } from "./modules/dom/mainPage"
 import test_image from "./assets/images/test_image.jpg";
 
-// const contentDiv = document.querySelector("#content");
-// contentDiv.appendChild(mainPage());
-
 mainPage();
