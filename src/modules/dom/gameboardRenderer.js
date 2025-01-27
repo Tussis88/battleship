@@ -8,7 +8,8 @@ function gameboardRenderer(game) {
     const boardCpuDiv = document.createElement("div");
     boardCpuDiv.classList.add("board");
 
-    const boardDiv = document.createElement("div");
+    const boardDiv = document.querySelector("#board_container");
+    boardDiv.textContent = "";
     boardDiv.appendChild(boardPlayerDiv);
     boardDiv.appendChild(boardCpuDiv);
 
@@ -40,7 +41,14 @@ function gameboardRenderer(game) {
             cellButton.classList.add("cell")
             boardCpuDiv.appendChild(cellButton);
             cellButton.addEventListener("click", () => {
-                game.playRound(i, j);
+                const result = game.playRound(i, j);
+                if (result === "player") {
+                    alert("You Win!");
+                    location.reload();
+                } else if (result === "cpu") {
+                    alert("You Lose!");
+                    location.reload();
+                }
                 gameboardRenderer(game);
             })
             if (cpuBoard[i][j].hasShip() && cpuBoard[i][j].isHit) {
